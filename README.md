@@ -21,7 +21,9 @@ If you would like to take part in the workshop you will require:
 
 You will also require an "API key" in order to interact with a large language model. Any LLM is fine, whether it's ChatGPT, Claude, Google Gemini, etc.
 
-If you don't already have an API key, I recommend generating one for the free tier of Google Gemini:
+If you don't already have an API key, I recommend generating one for the free tier of Google Gemini. Just to warn you, Google will be able to use your information to improve it's services, so avoid including any confidential or senstive code in your prompts!
+
+Google Gemini API key instructions:
 
 - Visit this webpage: https://aistudio.google.com/app/api-keys
 
@@ -33,7 +35,7 @@ If you don't already have an API key, I recommend generating one for the free ti
 
 - Finally, click "Create key"
 
-- Expand the created key and copy the API key sequence
+- Expand the created key and copy the "API key" sequence
 
 - Store it under an environment variable called `GOOGLE_API_KEY` or `GEMINI_API_KEY`
 
