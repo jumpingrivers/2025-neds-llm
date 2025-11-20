@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Generative AI Basics</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jumping Rivers (@jumping_uk)" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Generative AI Basics
+]
+.subtitle[
+## Chapter 1
+]
+.author[
+### Jumping Rivers (<a href="https://twitter.com/jumping_uk">@jumping_uk</a>)
+]
+
+---
+
+
+
+
+layout: true
+layout: true
+
+      &lt;div class="jr-header"&gt;
+        &lt;img class="logo" src="assets/jr_logo.png"/&gt;
+        &lt;span class="social"&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;#x0001d54f&lt;/b&gt;&lt;/td&gt;&lt;td&gt; &lt;a href="https://twitter.com/jumping_uk" style="color:inherit"&gt;@jumping_uk&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      
+&lt;div class="jr-footer"&gt;&lt;span&gt;&amp;copy; 2025 Jumping Rivers (&lt;a href="https://jumpingrivers.com" style="color:inherit"&gt;jumpingrivers.com&lt;/a&gt;)&lt;/span&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+---
+
+## Generative AI Basics
+
+In this chapter we will cover:
+
+* Overview of Large Language Models (LLMs)
+
+* Comparison of popular models (ChatGPT, Claude, etc)
+
+* Strengths and weaknesses of LLMs
+
+---
+
+## What are LLMs?
+
+LLMs are a type of **Generative AI** model:
+
+* Designed to generate "stuff" (in this case **text**)
+
+* Receives a text input, generates a text output
+
+* Very knowledgable:
+
+  * Trained on massive datasets of text
+
+  * Books, articles, websites, ...
+  
+  * Even trained on open source code!
+
+* Good at imitating specific writing styles
+
+---
+
+## How does it work?
+
+*   User provides a text input (called a "**user prompt**"):
+
+    ```
+    What happened in 1066?
+    ```
+
+*   Input is converted into "**tokens**":
+
+    ```
+    {What} {happened} {in}{ }{106}{6}{?}
+    ```
+
+*   The tokens are converted into numerical representations (**vectorisation**)
+
+*   The input can now be processed by the model
+
+---
+
+## How does it work?
+
+*   The model generates a sequence of output tokens:
+
+    ```
+    {In}{ }{106}{6}{,} {a} {major} {succession}
+    {crisis} {in} {England} ...
+    ```
+
+*   Model predicts one token at a time using **probabilities**
+
+*   The same prompt can give different outputs:
+
+    ```
+    {The} {year}{ }{106}{6} {is} {famous} {for}
+    {the} {Norman} {Con}{quest} {of} {England} ...
+    ```
+
+*   This randomness can make LLMs feel more human
+
+---
+
+## Controlling the LLM behaviour
+
+We do have some control over the style of the output
+
+*   **System prompt**: how the LLM should behave
+
+*   Example:
+
+    ```
+    You provide your answers in the guise of a witty
+    university professor
+    ```
+
+*   This might involve some trial and error...
+
+    ```
+    Ah, 1066. A year for the ages! Imagine, if you
+    will, the academic equivalent of a reality TV
+    finale, only with considerably more chainmail
+    and fewer commercially sponsored protein
+    shakes ...
+    ```
+
+*   We will return to user and system prompts in Chapter 2
+
+---
+
+## Models vs providers
+
+We have a lot of choice!
+
+* **Providers**: the companies that build the LLMs
+
+  * OpenAI, Anthropic, Google, ...
+
+* **Models**: the LLMs offered by the providers
+
+  * OpenAI: GPT-4.1, GPT-4.1 nano, ...
+
+  * Anthropic: Claude Opus 4, Claude Sonnet 4, Claude Sonnet 3.7, ...
+
+  * Google: Gemini 2.0 Flash, Gemini 2.0 Flash-Lite, ...
+
+* Most models include a cheaper, more lightweight variant
+
+---
+
+## LLM pricing
+
+Pricing is calculated per million tokens:
+
+* Output tokens typically more expensive than input tokens
+
+* Prices can vary drastically: $0.3 to $75 per million tokens
+
+* You might accumulate tokens quicker than you realise...
+
+* Money saving tips:
+
+  * use the system prompt to request shorter outputs
+
+  * test with the cheaper model variants before making a decision
+
+---
+
+## Strengths of LLMs
+
+* Document generation (emails, reports)
+
+* Concise summaries (meeting transcripts, presentations)
+
+* In Data Science:
+
+  * Code generation
+
+  * Producing data summaries
+
+  * Chat interface for dashboards (Shiny, Streamlit, etc)
+
+---
+
+## Weaknesses and common pitfalls
+
+* **Hallucinations**: incorrect information presented as fact:
+
+  * Might need a better system prompt
+
+  * Use **Retrieval-Augmented Generation (RAG)** to access an external database
+
+* Outdated knowledge ("What is today's date?")
+
+* Poor at logical reasoning (**be very careful with math!**)
+
+* Token limit: may not remember the full conversation history
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "ratio": "16:9",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

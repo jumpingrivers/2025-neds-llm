@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Wrapping up</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jumping Rivers (@jumping_uk)" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Wrapping up
+]
+.subtitle[
+## Chapter 3
+]
+.author[
+### Jumping Rivers (<a href="https://twitter.com/jumping_uk">@jumping_uk</a>)
+]
+
+---
+
+
+
+
+layout: true
+layout: true
+
+      &lt;div class="jr-header"&gt;
+        &lt;img class="logo" src="assets/jr_logo.png"/&gt;
+        &lt;span class="social"&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;#x0001d54f&lt;/b&gt;&lt;/td&gt;&lt;td&gt; &lt;a href="https://twitter.com/jumping_uk" style="color:inherit"&gt;@jumping_uk&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      
+&lt;div class="jr-footer"&gt;&lt;span&gt;&amp;copy; 2025 Jumping Rivers (&lt;a href="https://jumpingrivers.com" style="color:inherit"&gt;jumpingrivers.com&lt;/a&gt;)&lt;/span&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+---
+
+## Wrapping up
+
+Overview:
+
+* Retrieval-Augmented Generation (RAG)
+
+* Use cases for LLMs in Data Science
+
+---
+
+## RAG
+
+Retrieval-Augmented Generation
+
+* Augments the user prompt with external information
+
+* In R: check out [ragnar](https://ragnar.tidyverse.org/)
+
+* In Python: [LlamaIndex](https://developers.llamaindex.ai/python/framework/), [pinecone](https://docs.pinecone.io/reference/python-sdk), [chromadb](https://docs.pinecone.io/reference/python-sdk)
+
+* Text information has to be vectorised first
+
+* Connect the RAG system to a vector database, then attach to the chat client
+
+---
+
+## Uses cases in Data Science
+
+Pair programming (GitHub Copilot, Positron Assistant, ...)
+
+* Benefit: speeds up creation of code and documentation
+
+* You should still encourage a thorough code review process
+
+* Before copilots: person A writes code, person B reviews code
+
+* With copilots: person A writes code with help from copilot, person B reviews code
+
+---
+
+## Use cases in Data Science
+
+LLM-powered applications
+
+* Example: [{shinychat}](https://posit-dev.github.io/shinychat/) and [{querychat}](https://posit-dev.github.io/querychat/) for Shiny apps
+
+* Benefit: more intuitive interface for some users
+
+* Caution:
+
+  * Be careful with the LLM tuning for an enterprise app (system prompts, RAG)
+
+---
+
+## Use cases in Data Science
+
+Data summarisation
+
+* Summarise large volumes of text, data and images
+
+* Condensing large documents or meeting transcripts
+
+* Document and report creation (e.g. Quarto reports)
+
+  * Use to speed up creation
+  
+  * Should still be reviewed by a second person
+
+---
+
+## Resources
+
+* Jumping Rivers (training and blogs): [jumpingrivers.com/](https://www.jumpingrivers.com/)
+
+* Jumping Rivers webinars: [jumpingrivers.com/blog/jumping-rivers-webinar-launch/](https://www.jumpingrivers.com/blog/jumping-rivers-webinar-launch/)
+
+* {ellmer}: https://ellmer.tidyverse.org/
+
+* chatlas: https://posit-dev.github.io/chatlas/
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "ratio": "16:9",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

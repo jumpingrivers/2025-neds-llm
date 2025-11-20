@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Programming with LLM APIs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Jumping Rivers (@jumping_uk)" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Programming with LLM APIs
+]
+.subtitle[
+## Chapter 2
+]
+.author[
+### Jumping Rivers (<a href="https://twitter.com/jumping_uk">@jumping_uk</a>)
+]
+
+---
+
+
+
+
+layout: true
+layout: true
+
+      &lt;div class="jr-header"&gt;
+        &lt;img class="logo" src="assets/jr_logo.png"/&gt;
+        &lt;span class="social"&gt;&lt;table&gt;&lt;tr&gt;&lt;td&gt;&lt;b&gt;&amp;#x0001d54f&lt;/b&gt;&lt;/td&gt;&lt;td&gt; &lt;a href="https://twitter.com/jumping_uk" style="color:inherit"&gt;@jumping_uk&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      
+&lt;div class="jr-footer"&gt;&lt;span&gt;&amp;copy; 2025 Jumping Rivers (&lt;a href="https://jumpingrivers.com" style="color:inherit"&gt;jumpingrivers.com&lt;/a&gt;)&lt;/span&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;
+---
+
+## Programming with LLMs
+
+In this chapter we will cover:
+
+* Connecting to LLM APIs from R and Python
+
+* Good practices for writing user and system prompts
+
+* Formatting prompts for structured outputs
+
+---
+
+## Connecting to LLMs
+
+We will use the {ellmer} (R) and chatlas (Python) packages:
+
+* Both packages are maintained by Posit
+
+* Available via CRAN and PyPI (free to install)
+
+* There is parity between the package features
+
+* Supports connections to lots of providers and models
+
+  * {ellmer}: https://ellmer.tidyverse.org/#providers
+
+  * chatlas: https://posit-dev.github.io/chatlas/get-started/models.html
+
+---
+
+## Caveat: API key
+
+The packages on their own are not enough...
+
+* You will need to acquire an API key for your chosen model
+
+* This should be saved as an environment variable
+
+* For this course you can use a free API key for Google Gemini:
+
+  * **Warning**: do not include sensitive information in your prompts!
+
+  * Follow the instructions at https://ai.google.dev/gemini-api/docs/api-key
+
+  * Store the key under the `GOOGLE_API_KEY` environment variable
+
+---
+
+## Connecting to the LLM
+
+We first have to choose the provider and model:
+
+*   Example: Google Gemini free tier
+
+*   In R:
+
+    ```
+    chat = ellmer::chat_google_gemini()
+    ```
+
+*   In Python:
+
+    ```
+    chat = chatlas.ChatGoogle()
+    ```
+
+---
+
+## Live demo
+
+* Open **2-demo.R** (R users) or **2-demo.ipynb** (Python users)
+
+---
+
+## User prompts
+
+* General knowledge is pretty good!
+
+* Lacks real time knowledge about the date, weather, etc
+
+* Programming knowledge:
+
+  * Often good with older more established packages
+
+  * Might struggle with more recent packages
+
+  * There are LLMs built specifically for pair programming (GitHub copilot, Positron Assistant, ...)
+
+* Add extra detail if you require a particular format (word count, style)
+
+---
+
+## System prompt
+
+* A one off prompt at the beginning of a conversation
+
+* Use to control the style and format of outputs
+
+* Can also provide contextual knowledge including package documentation
+
+---
+
+## Live demo
+
+* Back to the .R and .ipynb scripts...
+
+---
+
+## Structured outputs
+
+* So far the LLM outputs are "unstructured" strings
+
+* What about getting the output into a more usable programmatic format:
+
+  * Numbers
+  
+  * Arrays
+  
+  * Dataframes
+
+* In {ellmer} we can use the `chat_structured` method
+
+* We have to be explicit with the return types
+
+---
+
+## Live demo
+
+* Back to the .R script
+
+---
+
+## Image processing
+
+Did you know that LLMs can process image data?
+
+* We have just seen the `content_image_file()` function
+
+* This encodes an image file for input to the LLM
+
+* Another example could be to interpret the trend in a plot
+
+* PDFs are also supported: `content_pdf_file()`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "ratio": "16:9",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
