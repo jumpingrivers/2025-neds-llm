@@ -67,7 +67,7 @@ chat = chat_google_gemini(
 chat$chat("What happened in 1066?")
 
 # Adding contextual knowledge (e.g. package README)
-filename = "scripts/other_llms/chapter2/README.md"
+filename = "scripts/README.md"
 ellmer_readme = readChar(filename, file.info(filename)$size)
 
 system_prompt = paste0(

@@ -54,7 +54,7 @@ people = chat$chat_structured(
 ## Question 2
 
 # An image file called "safari.jpg" is attached.
-image_filepath = file.path("scripts", "other_llms", "chapter2", "safari.jpg")
+image_filepath = file.path("scripts", "safari.jpg")
 
 ## Question 2a
 # Get a summary of what is shown in the image
